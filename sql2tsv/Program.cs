@@ -37,8 +37,9 @@ namespace sql2tsv
                 using (var connection = new SqlConnection(connString))
                 {
                     connection.Open();
-                    var sql = string.Format("SELECT * FROM {0}", o.Table);
+                    var sql = string.Format("SELECT TOP({0}) {1} FROM {2}", o.MaxRecords, o.Columns, o.Table);
                     if (!string.IsNullOrEmpty(o.Filter)) sql = sql + " WHERE " + o.Filter;
+                    if (!string.IsNullOrEmpty(o.Order)) sql = sql + " ORDER BY " + o.Order;
 
                     var cmd = new SqlCommand(sql, connection);
                     var dr = cmd.ExecuteReader();

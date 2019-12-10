@@ -25,5 +25,14 @@ namespace sql2tsv
 
         [Option('f', "filter", Required = false)]
         public string Filter { get; set; }
+
+        [Option('o', "order", Required = false)]
+        public string Order { get; set; }
+
+        [Option('m', "maxrecords", Required = false, Default = 9999999)]
+        public int MaxRecords { get; set; }
+
+        [Option('c', "columns", Required = false, Default = "*")]
+        public string Columns { get; set; }
     }
 }
