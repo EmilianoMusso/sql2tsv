@@ -14,8 +14,6 @@ namespace sql2tsv
             Parser.Default.ParseArguments<Options>(args)
                    .WithParsed<Options>(o => RunProgram(o))
                    .WithNotParsed<Options>(e => ErrorMessage(e));
-
-            Console.ReadLine();
         }
 
         /// <summary>
@@ -39,7 +37,10 @@ namespace sql2tsv
                 using (var connection = new SqlConnection(connString))
                 {
                     connection.Open();
-                    var cmd = new SqlCommand(string.Format("SELECT * FROM {0}", o.Table), connection);
+                    var sql = string.Format("SELECT * FROM {0}", o.Table);
+                    if (!string.IsNullOrEmpty(o.Filter)) sql = sql + " WHERE " + o.Filter;
+
+                    var cmd = new SqlCommand(sql, connection);
                     var dr = cmd.ExecuteReader();
 
                     Console.WriteLine("{0}", string.Join('\t', dr.GetColumnSchema().Select(x => x.ColumnName).ToArray()));

@@ -22,5 +22,8 @@ namespace sql2tsv
 
         [Option('t', "table", Required = true)]
         public string Table { get; set; }
+
+        [Option('f', "filter", Required = false)]
+        public string Filter { get; set; }
     }
 }
