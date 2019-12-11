@@ -24,27 +24,27 @@ Exports SQL Server Table Data in TSV Format
 
 ##### Standard 
 ```batch
-sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE
+sql2tsv.exe -u USERID -p PASSWORD -s SERVER -d DATABASE -t TABLE
 
-sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE > table.txt
+sql2tsv.exe -u USERID -p PASSWORD -s SERVER -d DATABASE -t TABLE > table.txt
 ```
 
 ##### Add filters for WHERE clause 
 ```batch
-sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE -f "field01 < 1000 AND field02 = 0"
+sql2tsv.exe -u USERID -p PASSWORD -s SERVER -d DATABASE -t TABLE -f "field01 < 1000 AND field02 = 0"
 ```
 
 ##### Query for N records (1000 in example)
 ```batch
-sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE -m 1000
+sql2tsv.exe -u USERID -p PASSWORD -s SERVER -d DATABASE -t TABLE -m 1000
 ```
 
 ##### Select two columns
 ```batch
-sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE -c "Field01, Field02"
+sql2tsv.exe -u USERID -p PASSWORD -s SERVER -d DATABASE -t TABLE -c "Field01, Field02"
 ```
 
 ##### Order by a column
 ```batch
-sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE -o "Field03"
+sql2tsv.exe -u USERID -p PASSWORD -s SERVER -d DATABASE -t TABLE -o "Field03"
 ```
