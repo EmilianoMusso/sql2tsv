@@ -1,7 +1,8 @@
 {
   "profiles": {
     "sql2tsv": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "-s server\\sistemi -u sa -p Sistemi123 -d GIANNITTI_ESOLVER -t ArtAnagrafica -m 5 -c \"CodArt, DesArt, CodFamiglia, FirmaUltVarData\" -x \"|\" -l 1 -f \"CodFamiglia= 'IMB'\""
     }
   }
 }

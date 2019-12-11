@@ -43,5 +43,9 @@ namespace sql2tsv
 
         [Option('x', "separator", Required = false, Default = "\t")]
         public string Separator { get; set; }
+
+        [Option('l', "filllength", Required = false, Default = 0)]
+        public int FillLength { get; set; }
+
     }
 }

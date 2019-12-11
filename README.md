@@ -17,6 +17,7 @@ Exports SQL Server Table Data in TSV Format
   -q, --query         (Default: )
   -h, --hasheaders    (Default: 1)
   -x, --separator     (Default:         )
+  -l, --filllength    (Default: 0)
 ```
 
 ### Sample usages
