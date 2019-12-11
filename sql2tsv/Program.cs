@@ -33,24 +33,25 @@ namespace sql2tsv
         {
             try
             {
-                var connString = $@"Password={o.Password};Persist Security Info=True;User ID={o.UserID};Initial Catalog={o.InitialCatalog};Data Source={o.Instance}";
+                var connString = $@"Password={o.Password};Persist Security Info=True;User ID={o.UserID};Initial Catalog={o.InitialCatalog};Data Source={o.Server}";
                 using (var connection = new SqlConnection(connString))
                 {
                     connection.Open();
-                    var sql = string.Format("SELECT TOP({0}) {1} FROM {2}", o.MaxRecords, o.Columns, o.Table);
+                    var sql = o.Query;
+                    if (string.IsNullOrEmpty(sql)) sql = string.Format("SELECT TOP({0}) {1} FROM {2} ", o.MaxRecords, o.Columns, o.Table);
                     if (!string.IsNullOrEmpty(o.Filter)) sql = sql + " WHERE " + o.Filter;
                     if (!string.IsNullOrEmpty(o.Order)) sql = sql + " ORDER BY " + o.Order;
 
                     var cmd = new SqlCommand(sql, connection);
                     var dr = cmd.ExecuteReader();
 
-                    Console.WriteLine("{0}", string.Join('\t', dr.GetColumnSchema().Select(x => x.ColumnName).ToArray()));
+                    if (o.HasHeaders == 1) Console.WriteLine("{0}", string.Join(o.Separator, dr.GetColumnSchema().Select(x => x.ColumnName).ToArray()));
                     while (dr.Read())
                     {
                         object[] valori = new object[dr.FieldCount];
                         dr.GetValues(valori);
 
-                        Console.WriteLine("{0}", string.Join('\t', valori));
+                        Console.WriteLine("{0}", string.Join(o.Separator, valori));
                     }
                 }
             }

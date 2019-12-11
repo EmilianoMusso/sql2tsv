@@ -2,7 +2,26 @@
 
 Exports SQL Server Table Data in TSV Format
 
-##### Standard usage
+### Command line parameters
+
+```
+  -u, --userid        Required.
+  -p, --password      Required.
+  -d, --database      Required.
+  -s, --server        Required.
+  -t, --table         Required.
+  -f, --filter
+  -o, --order
+  -m, --maxrecords    (Default: 9999999)
+  -c, --columns       (Default: *)
+  -q, --query         (Default: )
+  -h, --hasheaders    (Default: 1)
+  -x, --separator     (Default:         )
+```
+
+### Sample usages
+
+##### Standard 
 ```batch
 sql2tsv.exe -u USERID -p PASSWORD -i INSTANCE -d DATABASE -t TABLE
 

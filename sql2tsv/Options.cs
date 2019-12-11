@@ -17,8 +17,8 @@ namespace sql2tsv
         [Option('d', "database", Required = true)]
         public string InitialCatalog { get; set; }
 
-        [Option('i', "instance", Required = true)]
-        public string Instance { get; set; }
+        [Option('s', "server", Required = true)]
+        public string Server { get; set; }
 
         [Option('t', "table", Required = true)]
         public string Table { get; set; }
@@ -34,5 +34,14 @@ namespace sql2tsv
 
         [Option('c', "columns", Required = false, Default = "*")]
         public string Columns { get; set; }
+
+        [Option('q', "query", Required = false, Default = "")]
+        public string Query { get; set; }
+
+        [Option('h', "hasheaders", Required = false, Default = 1)]
+        public int HasHeaders { get; set; }
+
+        [Option('x', "separator", Required = false, Default = "\t")]
+        public string Separator { get; set; }
     }
 }
