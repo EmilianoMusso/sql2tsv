@@ -1,6 +1,6 @@
 # sql2tsv 
 
-Exports SQL Server Table Data in TSV Format
+Exports SQL Server Table Data in TSV Format (tab-separated values by default, it is however possible to specify another separator)
 
 ### Command line parameters
 
